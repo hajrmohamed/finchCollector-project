@@ -1,0 +1,18 @@
+{% extends 'base.html' %}# same page for both edit and add 
+{% block content%}
+
+{% if object %} # means if there is a finch exisiting already
+    <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+{% else %}
+    <h1> Add Toy </h1>  
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+</form>
+
+
+{% endblock %}

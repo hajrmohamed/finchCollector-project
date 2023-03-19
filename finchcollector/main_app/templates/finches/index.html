@@ -1,20 +1,22 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
+{% extends 'base.html' %} {% block content %}
 <h1>Finch List</h1>
 {% for finch in finches %}
-
-    <div class="card">
-        <div class="card-content">
-            <span class='card-title'>{{finch.name}}</span>
-            <p>Description: {{finch.description}}</p>
+<div class="card">
+  <a href="{% url 'detail' finch.id %}"> {% comment %} <a href="/finches/{{finch.id}}"> {% endcomment %}
+  <div class="card-content">
+    <div class="flex-container">
+      <div>
+        <span class="card-title">{{ finch.name }}</span>
+        <p>Description: {{finch.description}}</p>
             <p>Length: {{finch.length}}</p>
             <p>Weight: {{finch.weight}}</p>
-
-        </div>
+        
+      </div>
+      <div>
+        {% load static %} 
+        <img width="100px" height="100px" src={% static finch.upload|cut:'main_app/static/' %} />
+      </div>
     </div>
-
-
-{% endfor%}
-{% endblock%}
+  </div>
+</a>
+  {% endfor %} {% endblock %}

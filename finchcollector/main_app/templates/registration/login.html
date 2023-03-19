@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block content%}
+<h1>Login Page</h1>
+
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit" class="btn" value="Login">
+{% comment %} it  will take us to the page we want {% endcomment %}
+    <input type="hidden" value="{{next}}"  name="next">
+</form>
+{%endblock%}
